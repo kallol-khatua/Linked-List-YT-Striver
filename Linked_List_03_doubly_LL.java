@@ -20,7 +20,7 @@ public class Linked_List_03_doubly_LL {
     private static DLLNode convertArrToDLL(int[] arr) {
         DLLNode head = new DLLNode(arr[0]);
         DLLNode prev = head;
-        for(int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
             DLLNode temp = new DLLNode(arr[i], null, prev);
             prev.next = temp;
             prev = temp;
@@ -36,9 +36,23 @@ public class Linked_List_03_doubly_LL {
         System.out.println();
     }
 
+    private static DLLNode removeHead(DLLNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        DLLNode prev = head;
+        head = head.next;
+        head.back = null;
+        prev.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 7, 1, 9};
         DLLNode head = convertArrToDLL(arr);
         printDLL(head);
+
+        DLLNode removeHead = removeHead(head);
+        printDLL(removeHead);
     }
 }
