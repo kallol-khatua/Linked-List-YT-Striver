@@ -47,12 +47,28 @@ public class Linked_List_03_doubly_LL {
         return head;
     }
 
+    private static DLLNode removeTail(DLLNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        DLLNode temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next.back = null;
+        temp.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 7, 1, 9};
         DLLNode head = convertArrToDLL(arr);
         printDLL(head);
 
-        DLLNode removeHead = removeHead(head);
-        printDLL(removeHead);
+//        DLLNode removeHead = removeHead(head);
+//        printDLL(removeHead);
+
+        DLLNode removeTail = removeTail(head);
+        printDLL(head);
     }
 }
