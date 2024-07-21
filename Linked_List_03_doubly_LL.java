@@ -60,6 +60,42 @@ public class Linked_List_03_doubly_LL {
         return head;
     }
 
+    private static DLLNode removeKth(DLLNode head, int k) {
+        if (head == null) return null;
+        if (head.next == null) {
+            if (k == 1) {
+                return null;
+            } else {
+                return head;
+            }
+        }
+
+        if (k == 1) {
+            DLLNode prev = head;
+            head = head.next;
+            head.back = null;
+            prev.next = null;
+            return head;
+        }
+
+        DLLNode temp = head;
+        DLLNode prev = null;
+        int count = 1;
+        while (temp != null) {
+            if (count == k) {
+                prev.next = temp.next;
+                temp.next = null;
+                temp.back = null;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+            count++;
+        }
+
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 7, 1, 9};
         DLLNode head = convertArrToDLL(arr);
@@ -68,7 +104,10 @@ public class Linked_List_03_doubly_LL {
 //        DLLNode removeHead = removeHead(head);
 //        printDLL(removeHead);
 
-        DLLNode removeTail = removeTail(head);
-        printDLL(head);
+//        DLLNode removeTail = removeTail(head);
+//        printDLL(head);
+
+        DLLNode removeKth = removeKth(head, 1);
+        printDLL(removeKth);
     }
 }
