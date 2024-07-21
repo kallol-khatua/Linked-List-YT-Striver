@@ -31,6 +31,29 @@ public class Linked_List_01_Basics {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
+        System.out.println();
+    }
+
+    private static int lengthOfLL(Node head) {
+        int length = 0;
+        Node temp = head;
+        while (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+        return length;
+    }
+
+    private static boolean isValuePresent(Node head, int val){
+        boolean isPresent = false;
+        Node temp = head;
+        while (temp != null) {
+            if(temp.data == val) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return isPresent;
     }
 
     public static void main(String[] args) {
@@ -42,6 +65,10 @@ public class Linked_List_01_Basics {
         Node head = convertArrToLL(arr);
 //        System.out.println(head.next.data);
 
-        printLL(head);
+//        printLL(head);
+
+//        System.out.println("length of linked list = " + lengthOfLL(head));
+
+        System.out.println("Is value present " + isValuePresent(head, 4));
     }
 }
