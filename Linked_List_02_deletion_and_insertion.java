@@ -30,10 +30,37 @@ public class Linked_List_02_deletion_and_insertion {
             return null;
         }
         Node temp = head;
-        while(temp.next.next != null) {
+        while (temp.next.next != null) {
             temp = temp.next;
         }
         temp.next = null;
+        return head;
+    }
+
+    private static Node removeKth(Node head, int k) {
+        if (head == null) return null; // no element
+        if (head.next == null) { // single element
+            if (k == 1) return null;
+            else return head;
+        }
+
+        if (k == 1) { // removing head
+            return head.next;
+        }
+
+        Node temp = head;
+        Node prev = null;
+        int count = 1;
+        while (temp != null) {
+            if (count == k) {
+                prev.next = temp.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+            count++;
+        }
+
         return head;
     }
 
@@ -45,7 +72,10 @@ public class Linked_List_02_deletion_and_insertion {
 //        Node removeHead = removeHead(head);
 //        printLL(removeHead);
 
-        Node removeTail = removeTail(head);
-        printLL(head);
+//        Node removeTail = removeTail(head);
+//        printLL(head);
+
+        Node removeKth = removeKth(head, 4);
+        printLL(removeKth);
     }
 }
