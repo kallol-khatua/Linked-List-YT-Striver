@@ -64,6 +64,11 @@ public class Linked_List_02_deletion_and_insertion {
         return head;
     }
 
+//    TODO:
+    private static Node removeEl(Node head, int val) {
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 1, 5, 6};
         Node head = convertArrToLL(arr);
