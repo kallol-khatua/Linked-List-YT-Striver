@@ -25,6 +25,18 @@ public class Linked_List_02_deletion_and_insertion {
         return head.next;
     }
 
+    private static Node removeTail(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        Node temp = head;
+        while(temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 1, 5, 6};
         Node head = convertArrToLL(arr);
@@ -32,5 +44,8 @@ public class Linked_List_02_deletion_and_insertion {
 
 //        Node removeHead = removeHead(head);
 //        printLL(removeHead);
+
+        Node removeTail = removeTail(head);
+        printLL(head);
     }
 }
