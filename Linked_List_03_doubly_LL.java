@@ -138,6 +138,38 @@ public class Linked_List_03_doubly_LL {
         return head;
     }
 
+    private static DLLNode insertBeforeKth(DLLNode head, int val, int k) {
+        if (head == null) return null;
+        if (head.next == null && k == 1) {
+            DLLNode temp = head;
+            head = new DLLNode(val, temp, null);
+            temp.back = head;
+            return head;
+        }
+
+        int count = 1;
+        DLLNode temp = head;
+        DLLNode prev = null;
+        while (temp != null) {
+            if(k == 1) {
+                head = new DLLNode(val, temp, null);
+                temp.back = head;
+                return head;
+            }
+            if (count == k) {
+                DLLNode newNode = new DLLNode(val, temp, prev);
+                prev.next = newNode;
+                temp.back = newNode;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+            count++;
+        }
+
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 7, 1, 9};
         DLLNode head = convertArrToDLL(arr);
@@ -159,6 +191,10 @@ public class Linked_List_03_doubly_LL {
 //        DLLNode insertBeforeHead = insertBeforeHead(head, 3);
 //        printDLL(insertBeforeHead);
 
-        DLLNode insertBeforeTail = insertBeforeTail(head, 12);
-        printDLL(insertBeforeTail);    }
+//        DLLNode insertBeforeTail = insertBeforeTail(head, 12);
+//        printDLL(insertBeforeTail);
+
+        DLLNode insertBeforeKth = insertBeforeKth(head, 12, 2);
+        printDLL(insertBeforeKth);
+    }
 }
