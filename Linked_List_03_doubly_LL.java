@@ -110,6 +110,13 @@ public class Linked_List_03_doubly_LL {
         }
     }
 
+    private static DLLNode insertBeforeHead(DLLNode head, int val) {
+        DLLNode temp = head;
+        head = new DLLNode(val, temp, null);
+        temp.back = head;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 7, 1, 9};
         DLLNode head = convertArrToDLL(arr);
@@ -125,7 +132,10 @@ public class Linked_List_03_doubly_LL {
 //        printDLL(removeKth);
 
 //        node != head, and minimum 2 node present
-        removeNode(head.next);
-        printDLL(head);
+//        removeNode(head.next);
+//        printDLL(head);
+
+        DLLNode insertBeforeHead = insertBeforeHead(head, 3);
+        printDLL(insertBeforeHead);
     }
 }
