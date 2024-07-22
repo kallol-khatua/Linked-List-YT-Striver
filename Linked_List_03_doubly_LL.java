@@ -84,6 +84,9 @@ public class Linked_List_03_doubly_LL {
         while (temp != null) {
             if (count == k) {
                 prev.next = temp.next;
+                if (temp.next != null) {
+                    temp.next.back = temp.back;
+                }
                 temp.next = null;
                 temp.back = null;
                 break;
@@ -94,6 +97,17 @@ public class Linked_List_03_doubly_LL {
         }
 
         return head;
+    }
+
+    private static void removeNode(DLLNode node) {
+        DLLNode prev = node.back;
+        DLLNode front = node.next;
+
+        node.back = node.next = null;
+        prev.next = front;
+        if (front != null) {
+            front.back = prev;
+        }
     }
 
     public static void main(String[] args) {
@@ -107,7 +121,11 @@ public class Linked_List_03_doubly_LL {
 //        DLLNode removeTail = removeTail(head);
 //        printDLL(head);
 
-        DLLNode removeKth = removeKth(head, 1);
-        printDLL(removeKth);
+//        DLLNode removeKth = removeKth(head, 2);
+//        printDLL(removeKth);
+
+//        node != head, and minimum 2 node present
+        removeNode(head.next);
+        printDLL(head);
     }
 }
