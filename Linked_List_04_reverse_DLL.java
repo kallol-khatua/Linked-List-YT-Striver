@@ -28,13 +28,13 @@ public class Linked_List_04_reverse_DLL {
             temp.back = temp.next;
             temp.next = back;
             prev = temp;
-            temp = temp.back;
+            temp = temp.back;  // after changing next become back of the node
         }
         return prev;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 4, 1, 7};
+        int[] arr = {2, 4, 1, 7, 10};
         DLLNode head = convertArrToDLL(arr);
         printDLL(head);
 
